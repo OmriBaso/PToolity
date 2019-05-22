@@ -1,18 +1,26 @@
-# PToolity \ J3wker
-Python based script used for PT / Replacing the exisiting known tools
+**PToolity / By j3wker**
 
-ARP_PosionV1 VS ARP_PoisonV2 
+**ARP Tools - the ARP_Poison V1**
+the ARPv1 is the most basic ARP Poison program i created - the V2 on the other hand
+isn't done it - but the goal is to create a program that tracks the user even if he changes his IP 
+the V2 features a simpler method of getting the MAC address which gets the MAC Address only ONCE when starts running instead of getting it every time the loop runs
 
-ARP_PoisonV2 does something a bit different - 
-___________________________________________________
+**DNS Spoofing** 
 
-insted of geting the TARGET MAC ADDRESS a few times in a loop. 
+My thought about the DNS Spoofing was that i need 
+to create a Program simple enough to perform a DNS Spoofing attack
+but not be too complicated as create a whole DNS Server
+so i created a system that targets only one website at a time
+if you would like i will upgrade it to target more websites at the same time
 
-i took out the "get_mac" function out of the loop which prevents the App from 
+**Code Injector**
 
-crashing due to temporarily lose of connection - 
+The Code injector program can inject ANY code you want! 
+all you need to do is enter the code you want to inject and run SSLSTRIP
+*note: if you want i can implement SSLStrip inside the code injector
 
-since the MAC ADDRESS is usally static there is no need to use 
+**Sniffer** 
 
-the "get_mac" function inside
-the "Try:" loop
+Sniffer is simple - it has filters to get only the GOOD Shit - The important stuff
+in the packets like passwords and such.
+the Sniffer has the ability to choose from which interface to sniff
