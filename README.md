@@ -1,4 +1,5 @@
 **PToolity / By j3wker**
+**I DONT TAKE ANY RESPONSIBILITY ABOUT YOUR ACTIONS USING MY TOOLS - I CREATED THEM FOR EDUCATIONAL PURPOSES ONLY**
 
 **ARP Tools - the ARP_Poison V1**
 the ARPv1 is the most basic ARP Poison program i created - the V2 on the other hand
